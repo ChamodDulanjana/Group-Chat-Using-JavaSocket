@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="800.0" prefWidth="550.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.lk.ijse.chatApp.client.controller.ChatWindowController">
+   <children>
+      <AnchorPane prefHeight="73.0" prefWidth="550.0" style="-fx-background-color: #30336b;">
+         <children>
+            <Pane layoutX="16.0" layoutY="12.0" opacity="0.34" prefHeight="51.0" prefWidth="51.0" style="-fx-background-color: #7f8fa6; -fx-background-radius: 180;" />
+            <ImageView fitHeight="33.0" fitWidth="32.0" layoutX="26.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/icons8-user-32.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="lblName" layoutX="93.0" layoutY="24.0" prefHeight="21.0" prefWidth="190.0" text="Label" textFill="WHITE">
+               <font>
+                  <Font name="Calibri Bold" size="21.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <Line endX="449.0" layoutX="100.0" layoutY="729.0" startX="-100.0" stroke="#b5aeae" />
+      <JFXTextField fx:id="textField" layoutX="14.0" layoutY="747.0" prefHeight="36.0" prefWidth="364.0" promptText="Text Here">
+         <font>
+            <Font name="Calibri" size="19.0" />
+         </font>
+      </JFXTextField>
+      <ImageView fitHeight="36.0" fitWidth="42.0" layoutX="397.0" layoutY="750.0" onMouseClicked="#btnCameraOnAction" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/icons8-camera-50.png" />
+         </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ImageView>
+      <Button layoutX="456.0" layoutY="742.0" mnemonicParsing="false" onAction="#btnSendOnAction" prefHeight="44.0" prefWidth="84.0" style="-fx-background-color: #273c75; -fx-background-radius: 8;" text="Send" textFill="WHITE">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <font>
+            <Font name="Arial Bold" size="20.0" />
+         </font>
+      </Button>
+      <ScrollPane fx:id="ScrollPane" layoutY="73.0" prefHeight="655.0" prefWidth="550.0">
+         <content>
+            <VBox fx:id="vbox" prefHeight="648.0" prefWidth="541.0" />
+         </content>
+      </ScrollPane>
+      <ImageView fx:id="img" fitHeight="51.0" fitWidth="84.0" layoutX="24.0" layoutY="739.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="btnCancel" fitHeight="17.0" fitWidth="21.0" layoutX="125.0" layoutY="739.0" onMouseClicked="#btnCancelOnAction" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/icons8-close-window-26.png" />
+         </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ImageView>
+   </children>
+</AnchorPane>
