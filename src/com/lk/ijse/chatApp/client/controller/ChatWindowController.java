@@ -104,19 +104,19 @@ public class ChatWindowController {
             HBox hBox = new HBox();
 
             Text text = new Text(name);
-            //TextFlow textFlow = new TextFlow(text);
-            text.setText(name);
+            TextFlow textFlow = new TextFlow(text);
+            text.setText(name + " : ");
 
             hBox.setAlignment(Pos.CENTER_LEFT);
             hBox.setPadding(new Insets(5, 20, 5, 20));
 
 
-            //textFlow.setStyle("-fx-background-color: rgb(233, 233, 236);" +
-                    //"-fx-background-radius: 20px");
+            textFlow.setStyle("-fx-background-color: rgb(233, 233, 236);" +
+                    "-fx-background-radius: 20px");
 
             text.setStyle("-fx-font-size: 20px;");
-            //textFlow.setPadding(new Insets(5, 10, 8, 10));
-            //hBox.getChildren().add(textFlow);
+            textFlow.setPadding(new Insets(5, 10, 8, 10));
+            hBox.getChildren().add(textFlow);
 
             Image image = new Image(new ByteArrayInputStream(imageAr));
 
@@ -327,5 +327,32 @@ public class ChatWindowController {
         img.setVisible(false);
         btnCancel.setVisible(false);
         textField.setVisible(true);
+    }
+
+    public void setStage(Stage stage) {
+
+
+        stage.setOnCloseRequest(event -> {
+
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Do you want to close this chat !", ButtonType.YES, ButtonType.NO);
+            Optional<ButtonType> buttonType = alert.showAndWait();
+
+            if (buttonType.get() == ButtonType.YES) {
+
+                try {
+
+                    dataOutputStream.writeUTF("Close".trim());
+                    dataOutputStream.writeUTF(this.userName.trim());
+                    dataOutputStream.writeUTF("left the chat");
+                    dataOutputStream.flush();
+
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+            } else {
+                event.consume();
+            }
+
+        });
     }
 }

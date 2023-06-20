@@ -36,6 +36,7 @@ public class LoggingFormController{
         Stage stage = new Stage();
         stage.setTitle("Chat App");
         stage.setScene(new Scene(load));
+        controller.setStage(stage);
         stage.centerOnScreen();
         stage.show();
         txtName.clear();
